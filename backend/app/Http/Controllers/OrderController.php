@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
+use App\Http\Requests\OrederStoreRequest;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $order = Order::with('item')->get(); 
+        return response()->json($order);
     }
 
     /**
@@ -24,25 +25,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(OrederStoreRequest $request)
     {
+        $order = Order::create($request->all());
 
-        $banner = $request->file('banner');
-        if($banner && $banner->isValid()){
-            $banner_urn = $banner->store('product', 'public');
-        }
-
-        $product = Product::create([
-            'category_id' => $request->category_id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'banner' => $banner_urn,
-        ]);
-
-
-        return response()->json($product);
-
+        return response()->json($order);
     }
 
     /**
@@ -51,7 +38,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
         //
     }
@@ -63,9 +50,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $order = Order::where('id', $request->only('order_id'))->first();
+        $order->draft = false;
+        $order->save();
+        return response()->json($order);
     }
 
     /**
@@ -74,8 +64,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $order = Order::where('id', $request->only('order_id'))->delete();
+        
+        return response()->json($order);
     }
 }
