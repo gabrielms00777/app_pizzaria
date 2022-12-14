@@ -12,7 +12,7 @@ Funcionalidades:
 
 [X] - Logar usuário;
 
-[X] - Varificar autenticação para rotas privadas 
+[X] - Varificar autenticação para rotas privadas;
 [X] - Mostar detalhes do usuário logado 
 [X] - Criar e listar categorias 
 [X] - Criar produtos e listar produtos de uma categoria específica 
