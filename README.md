@@ -8,7 +8,9 @@ E o app com React Native.
 
 Funcionalidades:
 [X] - Cadastrar um novo usuário
+
 [X] - Logar usuário 
+
 [X] - Varificar autenticação para rotas privadas 
 [X] - Mostar detalhes do usuário logado 
 [X] - Criar e listar categorias 
