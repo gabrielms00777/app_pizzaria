@@ -6,7 +6,7 @@ Em breve pretendo fazer o frontend com React e Vue.
 
 E o app com React Native.
 
-Funcionalidades:
+Funcionalidades do back-end:
 
 [X] - Cadastrar um novo usuário
 
@@ -26,8 +26,8 @@ Funcionalidades:
 
 [X] - Enviar (order) retirar de rascunho 
 
-[ ] - Listar todos pedidos que não estão em rascunho (draft)
+[X] - Listar todos pedidos que não estão em rascunho (draft)
 
-[ ] - Poder acessar todos detalhes de uma mesa com pedidos nela
+[X] - Poder acessar todos detalhes de uma mesa com pedidos nela
 
-[ ] - Concluir o pedido
+[X] - Concluir o pedido
