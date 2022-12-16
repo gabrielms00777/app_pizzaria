@@ -14,6 +14,15 @@ class ItemController extends Controller
         return response()->json($item);
     }
 
+    public function show(Request $request)
+    {
+        //$order = Order::with('item')->where('id', $request->only('order_id'))->first();
+
+        $items = Item::with('product')->with('order')->where('order_id', $request->only('order_id'))->get();
+
+        return response()->json($items);
+    }
+
     public function store(ItemStoreRequest $request)
     {
         $item = Item::create($request->all());

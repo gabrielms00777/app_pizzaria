@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::with('item')->get(); 
+        $order = Order::whereStatus(0)->whereDraft(0)->get(); 
         return response()->json($order);
     }
 
@@ -38,9 +38,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $order = Order::with('item')->where('id', $request->only('order_id'))->first();
+
+        return response()->json($order);
     }
 
     /**
@@ -57,6 +59,16 @@ class OrderController extends Controller
         $order->save();
         return response()->json($order);
     }
+
+    public function finish(Request $request)
+    {
+        $order = Order::where('id', $request->only('order_id'))->first();
+        $order->status = true;
+        $order->save();
+        return response()->json($order);
+    }
+
+    
 
     /**
      * Remove the specified resource from storage.
