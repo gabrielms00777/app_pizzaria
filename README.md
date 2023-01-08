@@ -2,7 +2,7 @@ Projeto Pizzaria do curso - Projeto Completo NodeJS, React, React Native, TypeSc
 
 A diferença é que estou fazendo o backend em php/laravel em vez de node.js.
 
-Em breve pretendo fazer o frontend com React e Vue.
+Em breve pretendo fazer o frontend com React ou Vue.
 
 E o app com React Native.
 
